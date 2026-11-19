@@ -1,0 +1,82 @@
+/* =====================================================
+   responsive.css - tablet and mobile adjustments
+   Desktop is the default in style.css.
+   Breakpoints: 992px (small laptop), 768px (tablet),
+                480px (phone)
+   ===================================================== */
+
+/* ---------- Small laptop ---------- */
+@media (max-width: 992px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero h1 { font-size: 2.5rem; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+
+  .section { padding: 40px 0; }
+
+  /* Header: logo on top, menu below (scrolls sideways if needed) */
+  .site-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-height: 0;
+  }
+  .main-nav { width: 100%; overflow-x: auto; }
+  .main-nav ul { gap: 4px; }
+  .main-nav a { padding: 6px 12px; white-space: nowrap; }
+
+  /* Stack two-column layouts */
+  .two-col,
+  .detail,
+  .hero .container { grid-template-columns: 1fr; gap: 28px; }
+
+  .hero { padding: 48px 0; }
+  .hero h1 { font-size: 2.1rem; }
+  .shade { width: 44px; height: 120px; }
+
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+  .site-footer .container { grid-template-columns: 1fr 1fr; }
+  .site-footer .container > div:first-child { grid-column: 1 / -1; }
+
+  .toolbar { flex-direction: column; align-items: stretch; }
+  #search-box { width: 100%; min-width: 0; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 480px) {
+  .container { padding: 0 14px; }
+
+  .sale-bar { font-size: 0.85rem; padding: 8px 12px; }
+
+  .hero h1 { font-size: 1.8rem; }
+  .hero-actions .btn { width: 100%; }
+  .shades { display: none; }          /* decoration only */
+
+  .section-head { flex-direction: column; gap: 4px; }
+
+  /* One product per row on small phones */
+  .product-grid { grid-template-columns: 1fr; }
+
+  .site-footer .container { grid-template-columns: 1fr; }
+
+  .detail-info h1 { font-size: 1.6rem; }
+  .detail-info .btn { width: 100%; }
+
+  .filters { gap: 6px; }
+  .filter-btn { padding: 7px 14px; font-size: 0.9rem; }
+}
+
+/* ---------- Respect "reduce motion" setting ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  .product-card:hover,
+  .category-link:hover { transform: none; }
+}
